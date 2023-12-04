@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Cálculo de Média</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f0f0;
+      margin: 0;
+      padding: 20px;
+    }
+    .calculator {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      width: 300px;
+      margin: 0 auto;
+    }
+    input[type="number"], button {
+      margin: 8px 0;
+      padding: 8px;
+      width: 100%;
+      box-sizing: border-box;
+    }
+    button {
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+    .red {
+        color: red;
+    }
+    .green
+    {
+        color:rgb(7, 187, 7);
+    }
+  </style>
+</head>
+<body background="images.jpeg">
+
+<div class="calculator">
+  <h2>CÁLCULO DE MÉDIA</h2>
+  <h3>ADS (ALUNO DESESPERADO SOCORRO)</h3>
+  <label for="np1">Nota da NP1:</label>
+  <input type="number" id="np1" min="0" step="0.1">
+  <label for="np2">Nota da NP2:</label>
+  <input type="number" id="np2" min="0" step="0.1">
+  <label for="pim">Nota do PIM:</label>
+  <input type="number" id="pim" min="0" step="0.1">
+  <button onclick="calcularMedia()">Calcular Média</button>
+  <div id="resultado"></div>
+</div>
+
+<script>
+  function calcularMedia() {
+    const np1 = parseFloat(document.getElementById('np1').value);
+    const np2 = parseFloat(document.getElementById('np2').value);
+    const pim = parseFloat(document.getElementById('pim').value);
+
+    const media = (np1 * 4 + np2 * 4 + pim * 2) / 10;
+    const exame = (10 - media).toFixed(1);
+
+    let resultado = document.getElementById('resultado');
+    resultado.innerHTML = `
+      <p>MEDIA FINAL: ${media.toFixed(1)}</p>
+    `;
+
+    if (media >= 6.8) {
+      resultado.innerHTML += `<p class="green">APROVADO!</p>`;
+    } else {
+      resultado.innerHTML += `<p class="red">ALUNO ESTÁ DE EXAME! NECESSÁRIO TIRAR: ${exame}</p>`;
+    }
+  }
+</script>
+
+</body>
+</html>
